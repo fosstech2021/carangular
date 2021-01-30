@@ -1,0 +1,81 @@
+<div class="container pt-1 pb-1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8 pt-5">
+                    <div class="col-md-12 pb-4">
+                        <h3><span>{{BlogInformation.title}}</span></h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{BlogInformation.primary_image}}" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{{BlogInformation.secondary_image}}" class="img-fluid">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="color: gray;" [innerHTML]="BlogInformation.content_description"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 pt-5">
+                    <aside id="sidebar" class="sidebar bg-under-widget">
+                        <div class="sidebar-content widget-divider-off">
+                            <section id="presscore-blog-posts-6" class="widget widget_presscore-blog-posts">
+                                <h4 class="widget-title p-4"><b>Recent posts</b></h4>
+                                <ul class="recent-posts">
+                                    <li *ngFor="let i of RecentPost">
+                                        <article class="post-format-standard">
+                                            <div class="row">
+                                                <div class="col-md-4 pb-4">
+                                                    <a><img src="{{i.display_image}}" class="img-fluid"><i></i></a>
+                                                </div>
+                                                <div class="col-md-8 pb-4">
+                                                    <a>{{i.title}}</a><br>
+                                                    <time class="text-secondary" datetime="">{{i.updated_at|date
+                                                        }}</time>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </li>
+
+                                </ul>
+                            </section>
+                            <section id="recent-comments-2" class="widget widget_recent_comments">
+                                <h4 class="widget-title p-4"><b>Comments</b></h4>
+                                <ul id="recentcomments" *ngFor="let i of Recentcomments">
+                                    <li class="recentcomments"><a>{{i.comment}}</a></li>
+                                </ul>
+                            </section>
+                            <section id="woocommerce_products-2" class="widget woocommerce widget_products">
+                                <h4 class="widget-title p-4"><b>product</b></h4>
+                                <ul class="product_list_widget">
+                                    <li *ngFor="let i of ProductList">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                <img src="{{i.images[0]}}" class="img-fluid">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <span class="product-title">{{i.title}}</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                               
+                                </ul>
+                            </section>
+                        </div>
+                    </aside>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+.bg-under-widget .sidebar-content .widget, .solid-bg.sidebar-content .widget {
+    background: #f7f7f7 none repeat center center;
+}
+a {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+}
+li{
+    list-style: none;
+}
+.recentcomments{
+    padding-bottom: 1rem;
+}
+.img-car-part{
+height: 6rem;
+    width: 6rem;
+}

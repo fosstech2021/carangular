@@ -1,0 +1,43 @@
+.has-medium-font-size {
+    font-size: 20px;
+}
+p{
+    color: gray;
+    font-size: 1.2rem;
+}
+.wp-block-button{
+    
+    border: 1px solid;
+    width: 30%;
+    border-radius: 5%;
+    text-align: center;
+    font-size: 25px;
+    height: 2.7rem;
+}
+.wp-block-cover {
+    position: relative;
+    min-height: 430px;
+}
+.alignfull {
+    margin-top: calc(2 * 1rem);
+    margin-right: 0;
+    margin-bottom: calc(2 * 1rem);
+    margin-left: 0;
+    max-width: 100%;
+}
+.wp-block-cover, .wp-block-cover-image {
+    position: relative;
+    background-color: #000;
+    background-size: cover;
+    background-position: 50%;
+    min-height: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+block-cover .wp-block-cover__inner-container {
+    width: calc(100% - 70px);
+    z-index: 1;
+    color: #f8f9f9;
+}

@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-5">
+
+            <form [formGroup]="login" (ngSubmit)="loginuser()">
+                <div class="row">
+                    <div class="col-md-12 pb-3">
+                        <div class="text-center">
+                            <h3 style="font-weight: 600;">SIGN IN</h3>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input type="mail" class="form-control" id="email" placeholder="Enter your email"
+                            formControlName="email"
+                            [ngClass]="{ 'is-invalid': login.get('email')?.errors && (login.get('email').touched || login.get('email').dirty)}">
+                        <div *ngIf="login.get('email').errors?.required"
+                            class="invalid-feedback warning-msg">
+                            Email required
+                        </div>
+                        <div *ngIf="login.get('email').errors?.pattern" class="invalid-feedback warning-msg">
+                            Please Enter Valid Email Address
+                          </div>              
+                          <div *ngIf="login.get('email').errors?.minlength || login.get('email').errors?.maxlength"
+                            class="invalid-feedback warning-msg">
+                            Please Enter Valid Email Address
+                          </div> 
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input type="password" class="form-control" id="pwd"
+                            placeholder="Enter your password" formControlName="pwd"
+                            [ngClass]="{ 'is-invalid': login.get('pwd')?.errors && (login.get('pwd').touched || login.get('pwd').dirty)}">
+                        <div *ngIf="login.get('pwd').errors?.required" class="invalid-feedback warning-msg">
+                            Password required
+                        </div>
+                    </div>
+
+              
+
+                    <div class="form-group col-md-6 pb-3">
+                        <button type="submit" [disabled]="!login.valid" class="btn btn-black"><b>Login</b></button>
+                    </div>
+                    <div class="form-group col-md-6 pb-3">
+                        <button type="button" (click)="registernew()" class="btn btn-black"><b>Register</b></button>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-8">
+                                <div class="g-signin2" data-width="250" data-height="50"
+                                    data-longtitle="true" id="googleBtn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </form>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>

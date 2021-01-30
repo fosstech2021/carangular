@@ -1,0 +1,12 @@
+.shadow-space{
+    height: 20px;
+    background-color: ghostwhite;
+}
+.msg-hig{
+    height: 19rem;
+}
+.GetInTouch{
+    position: absolute;
+    bottom: 26%;
+    min-width: -webkit-fill-available;
+}

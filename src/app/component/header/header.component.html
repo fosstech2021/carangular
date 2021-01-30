@@ -1,0 +1,83 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg navbar-light p-0">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link" href="#" style="color: white;">
+            +91 9269969060,<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" style="color: white;">+91 9950871123</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" style="color: white;">Jodhpur, Rajasthan, India(342001)</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" [formGroup]="SearchForm">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" formControlName="Search" aria-label="Search">
+          <i class="fa fa-search" aria-hidden="true" style="color: white;"></i>
+
+        </form>
+        <li class="nav-item">
+          <a class="nav-link googleTag" href="https://www.facebook.com/Carchipcare-298221140769197/" target="_blank"><span class="fa fa-facebook" aria-hidden="true" style="color:white;"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link googleTag" href="https://www.youtube.com/channel/UC2OYGkwpn3bvH6NLCN1FiwA/about" target="_blank"><span class="fa fa-youtube-play" aria-hidden="true" style="color:white;"></span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link googleTag" href="https://wa.me/919001210608" target="_blank"><span class="fa fa-whatsapp" aria-hidden="true" style="color:white;"></span></a>
+
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link " routerLink="/login" style="color: white;">login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+    <a class="navbar-brand" href="#"><img src="../../../assets/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse back" id="nav">
+      <ul class="navbar-nav">
+     
+        <li class="nav-item  pr-2 pl-2 bar active">
+            <a class="nav-link" routerLink="/home"><h3><b>Home</b></h3></a>
+          </li>
+        <li class="nav-item bar pr-2 pl-2 ">
+          <a class="nav-link" routerLink="/Product"><h3><b>Product</b></h3></a>
+        </li>
+        <li class="nav-item bar dropdown pr-2 pl-2 ">
+          <a class="nav-link dropdown-toggle"href="#" id="navbarDropdown" role="button" data-toggle="dropdown" routerLink="/Service" aria-haspopup="true" aria-expanded="false"><h3><b>service</b></h3></a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">OBD</a>
+            <a class="dropdown-item" href="#">EMP</a>
+          </div>
+        </li>
+
+        <li class="nav-item bar pr-2 pl-2">
+          <a class="nav-link" routerLink="/Blog"> <h3><b>Blog</b></h3></a>
+        </li>
+        <li class="nav-item bar pr-2 pl-2">
+          <a class="nav-link" routerLink="/Contact"> <h3><b>Contact</b></h3></a>
+        </li>
+        <li class="nav-item bar pr-2 pl-2">
+          <a class="nav-link" routerLink="/Tc"><h3><b>Terms And Conditions</b></h3></a>
+        </li>
+        <li class="nav-item bar pr-2 pl-2 pt-3">
+            <a class="nav-link ContactUs "routerLink="/Contact" ><span>CONTACT US</span><i class="fa fa-arrow-circle-right"></i></a>
+        </li>
+      </ul>
+    
+      
+    </div>
+    
+  </nav>
+

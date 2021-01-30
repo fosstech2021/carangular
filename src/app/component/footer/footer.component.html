@@ -1,0 +1,102 @@
+<footer>
+    <div class="container pt-1 pb-1">
+        <div class="row">
+            <div class="col-md-12 border-bottom">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 p-3 mt-5 text-center">
+
+
+
+                                <form [formGroup]="ContactForm" (ngSubmit)="ContactUs()">
+
+                                    <div class="form-group">
+                                        <label style="color: lightgray;">Your Name (required)</label>
+                                        <input type="text" class="form-control" id="email" formControlName="Name"
+                                            [ngClass]="{ 'is-invalid': ContactForm.get('Name')?.errors && (ContactForm.get('Name').touched || ContactForm.get('Name').dirty)}">
+                                        <div *ngIf="ContactForm.get('Name').errors?.required"
+                                            class="invalid-feedback warning-msg">
+                                            Name required
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: lightgray;"> Your Email (required)</label>
+                                        <input type="email" class="form-control" id="email" formControlName="email"
+                                            [ngClass]="{ 'is-invalid': ContactForm.get('email')?.errors && (ContactForm.get('email').touched || ContactForm.get('email').dirty)}">
+                                        <div *ngIf="ContactForm.get('email').errors?.required"
+                                            class="invalid-feedback warning-msg">
+                                            Email required
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: lightgray;"> Your Message</label>
+                                        <textarea type="text" class="form-control msg-hig" id="Message"
+                                            formControlName="Message"
+                                            [ngClass]="{ 'is-invalid': ContactForm.get('Message')?.errors && (ContactForm.get('Message').touched || ContactForm.get('Message').dirty)}"></textarea>
+                                        <div *ngIf="ContactForm.get('Message').errors?.required"
+                                            class="invalid-feedback warning-msg">
+                                            Email required
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </form>
+                            </div>
+                            <div class="col-md-4 p-3 mt-5" *ngIf='ContactData != null'>
+                                <h4 style="color: white;"><b>Contact Info</b></h4>
+                                <h6 class="mt-4" style="color: white;">Phone Number</h6>
+                                <p style="color: lightslategrey;;">+91 9269969060, +91 9950871123</p>
+                                <h6 class="mt-4" style="color: white;">Email</h6>
+                                <p style="color: lightslategrey;">{{ContactData.email}}</p>
+                                <h6 class="mt-4" style="color: white;">Address</h6>
+                                <p style="color: lightslategrey;;">AEHEO,Opp. Delhi Public Primary School, Kamla Nehru
+                                    Nagar, Jodhpur, Rajasthan, India(342001)</p>
+                            </div>
+                            <div class="col-md-4 p-3 mt-5 text-center">
+                                <h4 style="color: white;"><b>Recent posts</b></h4>
+                                <ul class="recent-posts">
+                                    <li *ngFor="let i of RecentPost">
+                                        <div class="row mt-5">
+                                            <div class="col-md-3"><a [routerLink]="['/BlogDetails/'+i.id]"><img
+                                                        src="{{i.display_image}}" class="img-fluid"></a></div>
+                                            <div class="col-md-9"><a  [routerLink]="['/BlogDetails/'+i.id]" style="color: white;">{{i.title}}</a><br><time
+                                                    class="text-secondary"
+                                                    datetime="2019-11-15T08:02:07+05:30">{{i.updated_at|date}}</time>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pt-3 pb-1">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h6 style="color: lightslategrey;font-size: 0.8rem;text-transform: uppercase;">© 2019
+                                Automobile engineer help each other(aeheo) - powered by carchipcare</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-10 d-flex justify-content-center">
+                        <ul class="list-unstyled bottom-footer">
+
+                            <li><a routerLink="/home">Home</a></li>
+                            <li><a routerLink="/Product" >Product</a></li>
+                            <li><a routerLink="/Blog" >Blog</a></li>
+                            <li><a routerLink="/Contact" >Contact</a></li>
+                            <li><a routerLink="/Tc">Terms And Condition</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</footer>

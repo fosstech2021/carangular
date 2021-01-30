@@ -1,0 +1,81 @@
+.footer-nav p a{
+    cursor: pointer;
+}
+.footer-nav {
+    border-left: 1px solid rgba(255, 255, 255, 0.49);
+}
+footer
+{
+    background: #151a63;
+}
+.bottom-footer li a
+{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.4px;
+}
+.bottom-footer li a:hover
+{
+    color: #fff;
+}
+
+.float-left h2
+{ color: white;
+
+}
+.msg-hig{
+    height: 19rem;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+li{
+    list-style: none;
+}
+
+@media only screen and (min-width: 768px){
+    .bottom-footer li 
+    {
+    float: left;
+    margin: 0rem 1rem;
+    }
+    .border-bottom {
+        border-bottom: 1px solid #dee2e6!important;
+    }
+}
+
+@media only screen and (max-width: 767px){
+
+    .bottom-footer li 
+    {
+    text-align: center;
+    }
+
+    .float-left h2
+    { text-align: center;
+
+    }
+    .text-sm-center h2
+    {
+        text-align: center;
+    }
+    .bottom-footer li a
+{
+    line-height: 3;
+}
+
+}
+
+.outhantication{
+    text-align: center; color: #fff;
+}
+@media screen and (max-width: 720px) {
+    .outhantication{
+        text-align: center;color: #fff;
+    }
+    
+}

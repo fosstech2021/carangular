@@ -1,0 +1,68 @@
+/* #my-img:hover {
+    content: url('../../../assets/Product-2.jpg');
+
+}
+#my-img1:hover {
+    content: url('../../../assets/Product-2.jpg');
+}
+#my-img2:hover {
+    content: url('../../../assets/Product-3.jpg');
+}
+#my-img3:hover {
+    content: url('../../../assets/Digiprog-III-4.94.jpg');
+}
+#my-img4:hover {
+    content: url('../../../assets/fg-tech-2.jpg');
+}
+#my-img5:hover {
+    content: url('../../../assets/g-scan-2-3.jpg');
+} */
+.fa-info-circle{
+    position: absolute;     bottom: 50%;
+    right: 10%;;
+    font-size: 1.5rem;
+
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* height: 100%;
+    width: 100%; */
+    opacity: 0;
+    transition: .5s ease;
+  }
+  
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .slideproductimage img:last-child {
+    display: none;  
+  }
+  .slideproductimage:hover img:last-child {
+    display: block;  
+  }
+  .slideproductimage:hover img:first-child {
+    display: none;  
+  }
+
+  .font-iconsize{
+    width: 24px !important;
+    height: 24px !important;
+  }

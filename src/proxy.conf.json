@@ -1,0 +1,9 @@
+{
+  "/product": {
+      "target": "http://65.0.125.4:8000",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": "true",
+      "^/product": ""
+  }
+}
