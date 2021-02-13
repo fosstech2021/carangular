@@ -40,5 +40,30 @@ export class AaheoService {
   getcontactUs(){
     return this.http.get(this.path+"/contact_us/")
   }
+  GetBrand()
+  {
+    return this.http.get(this.path+"/brand/");
+  }
+  GetCarModel(id)
+  {
+    return this.http.get(this.path+"/car_model/" );
+  }
+
+  GetCarYear(id)
+  {
+    return this.http.get(this.path+"/car_year_model/" );
+  }
+  
+  GetServiceType(id)
+  {
+    return this.http.get(this.path+"/service_type/" );
+  }
+
+  
+  GetServiceTypeContainer(id)
+  {
+    return this.http.get(this.path+"/service_type_container/" );
+  }
+
 
 }

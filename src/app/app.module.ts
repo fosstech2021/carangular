@@ -17,6 +17,12 @@ import { LoginComponent } from './component/login/login.component';
 import { FilterServiceComponent } from './component/filter-service/filter-service.component';
 import { ProductInfoComponent } from './component/product-info/product-info.component';
 import { BlogDetailsComponent } from './component/blog-details/blog-details.component';
+import { BrandComponent } from './component/brand/brand.component';
+import { CarModelComponent } from './component/car-model/car-model.component';
+import { CaryearComponent } from './component/caryear/caryear.component';
+import { ServiceTypeContainerComponent } from './component/service-type-container/service-type-container.component';
+import { ServiceTypeComponent } from './component/service-type/service-type.component';
+import { PageNotFouundComponent } from './component/page-not-fouund/page-not-fouund.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,9 +33,16 @@ const appRoutes: Routes = [
   { path: 'Tc', component: TcComponent },
   { path: 'Contact', component: ContactUsComponent },
   { path: 'Service', component: FilterServiceComponent },
-
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'Brand', component: BrandComponent },
+  { path: 'CarModel/:id', component: CarModelComponent },
+  { path: 'CarYears/:id', component: CaryearComponent },
+  { path: 'ServiceType/:id', component: ServiceTypeComponent },
+  { path: 'ServiceTypeContainer/:id', component: ServiceTypeContainerComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' } ,
+  { path: '**', component:PageNotFouundComponent } 
+
+  
 ];
 
 @NgModule({
@@ -45,7 +58,13 @@ const appRoutes: Routes = [
     LoginComponent,
     FilterServiceComponent,
     ProductInfoComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+    BrandComponent,
+    CarModelComponent,
+    CaryearComponent,
+    ServiceTypeContainerComponent,
+    ServiceTypeComponent,
+    PageNotFouundComponent
   ],
   imports: [
     BrowserModule,
