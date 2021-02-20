@@ -40,18 +40,18 @@ export class AaheoService {
   getcontactUs(){
     return this.http.get(this.path+"/contact_us/")
   }
-  GetBrand()
+  GetBrand(id)
   {
-    return this.http.get(this.path+"/brand/");
+    return this.http.get(this.path+"/brand/?service_category=" + id);
   }
   GetCarModel(id)
   {
-    return this.http.get(this.path+"/car_model/" );
+    return this.http.get(this.path+"/car_model/?brand="+ id );
   }
 
   GetCarYear(id)
   {
-    return this.http.get(this.path+"/car_year_model/" );
+    return this.http.get(this.path+"/car_year_model/?model_id="+id);
   }
   
   GetServiceType(id)
@@ -60,10 +60,20 @@ export class AaheoService {
   }
 
   
-  GetServiceTypeContainer(id)
+  GetServiceTypeContainer(YearID ,FolderID)
   {
-    return this.http.get(this.path+"/service_type_container/" );
+    return this.http.get(this.path+"/service_type_container/?folder="+FolderID+"&year=" +YearID );
   }
 
+    
+  GetserviceCategory()
+  {
+    return this.http.get(this.path+"/service_category/" );
+  }
+
+  GetParentFolder(id)
+  {
+    return this.http.get(this.path+"/folder/?year=" +id);
+  }
 
 }

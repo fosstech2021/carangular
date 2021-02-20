@@ -12,19 +12,21 @@ export class ServiceTypeContainerComponent implements OnInit {
   
   constructor(  private route: ActivatedRoute , private register: AaheoService ) { }
 
-  parmsId:any;
+  YearID:any;
+  FolderID : any;
   ServiceTypeContainerList: any;
   ngOnInit(): void {
     debugger;
     this.route.params.subscribe((val) => {
-      this.parmsId = val.id;
+      this.YearID = val.YearID;
+      this.FolderID = val.FolderID;
      });
-     this.GetServiceTypeContainer(this.parmsId)
+     this.GetServiceTypeContainer(this.YearID , this.FolderID)
   }
 
-  GetServiceTypeContainer(Value)
+  GetServiceTypeContainer(YearID , FolderID )
   {
-  this.register.GetServiceTypeContainer(Value).subscribe((res: any) => {
+  this.register.GetServiceTypeContainer(YearID ,FolderID).subscribe((res: any) => {
     this.ServiceTypeContainerList = res.data.service_type_containers;
 
   })

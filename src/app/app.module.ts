@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AaheoService } from '../app//service/aaheo.service';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -23,6 +22,7 @@ import { CaryearComponent } from './component/caryear/caryear.component';
 import { ServiceTypeContainerComponent } from './component/service-type-container/service-type-container.component';
 import { ServiceTypeComponent } from './component/service-type/service-type.component';
 import { PageNotFouundComponent } from './component/page-not-fouund/page-not-fouund.component';
+import { ParentFolderComponent } from './component/parent-folder/parent-folder.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,15 +34,14 @@ const appRoutes: Routes = [
   { path: 'Contact', component: ContactUsComponent },
   { path: 'Service', component: FilterServiceComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'Brand', component: BrandComponent },
+  { path: 'Brand/:id', component: BrandComponent },
   { path: 'CarModel/:id', component: CarModelComponent },
   { path: 'CarYears/:id', component: CaryearComponent },
+  { path: 'ParentFolder/:id', component: ParentFolderComponent },
   { path: 'ServiceType/:id', component: ServiceTypeComponent },
-  { path: 'ServiceTypeContainer/:id', component: ServiceTypeContainerComponent },
+  { path: 'ServiceTypeContainer/:YearID/:FolderID', component: ServiceTypeContainerComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' } ,
-  { path: '**', component:PageNotFouundComponent } 
-
-  
+  { path: '**', component:PageNotFouundComponent }   
 ];
 
 @NgModule({
@@ -64,7 +63,8 @@ const appRoutes: Routes = [
     CaryearComponent,
     ServiceTypeContainerComponent,
     ServiceTypeComponent,
-    PageNotFouundComponent
+    PageNotFouundComponent,
+    ParentFolderComponent
   ],
   imports: [
     BrowserModule,

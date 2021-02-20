@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of ParentFolderList">
+            <div class="card h-100">
+                <!-- <a [routerLink]="['/ServiceType/'+i.id]"><img class="card-img-top" src='{{i.image}}'  alt="image"></a> -->
+                <div class="card-body align-text-bottom">
+                    <h4 class="card-title">
+                        <!-- <a [routerLink]="['/ServiceTypeContainer/'+YearID+'/' +i.id]" >{{i.name}}</a> -->
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="PopUpModel(i)" > -->
+                        <a type="button" class="link" data-toggle="modal" data-target="#myModal"
+                            (click)="PopUpModel(i)">
+                            {{i.name}}
+                        </a>
+                 
+                    </h4>
+                    <p class="card-text">{{i.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        {{i.name}}
+      </button>
+     -->
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" #closebutton  >×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="col-md-12 ">
+                        <h3 class="m-2 text-center">Parent Child </h3>
+                        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of child_foldersData">
+                            <div class="card h-100">
+
+                                <div class="card-body align-text-bottom">
+                                    <h4 class="card-title">
+                                        {{i.name}}
+                                    </h4>
+                                    <p class="card-text">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 ">
+                        <h3 class="m-2 text-center">Service Type Container</h3>
+                        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of child_service_type_containerData">
+                            <div class="card h-100">
+
+                                <div class="card-body align-text-bottom">
+                                    <h4 class="card-title">
+                                        <a [routerLink]="['/ServiceType/'+i.id]" >{{i.name}}</a> 
+
+                                    </h4>
+                                    <p class="card-text">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
