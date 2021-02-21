@@ -2,12 +2,16 @@
     <div class="row mt-5">
             <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of ServiceTypeList" >
               <div class="card h-100">
-                <a ><img class="card-img-top" src='{{i.content_url}}'  alt="image"></a>
+  
                 <div class="card-body align-text-bottom">
                   <h4 class="card-title">
                     <!-- <a [routerLink]="['/ServiceTypeContainer/'+i.id]" >{{i.name}}</a> -->
-                    <div class='row' [ngSwitch]="i.type">  
-                      <div *ngSwitchCase="'1'"><img src="i.content_url" > </div>  
+                    <div class='' [ngSwitch]="i.type">  
+                      <div *ngSwitchCase="'1'">
+                        <!-- <img class="card-img-top" src='{{i.content_url}}'  alt="image">  -->
+                        <a [href]="i.content_url" target="_blank" >{{i.name}}</a>
+                      
+                      </div>  
                       <div *ngSwitchCase="'2'"><a [href]="i.content_url" target="_blank" >{{i.name}}</a></div>  
                       <div *ngSwitchCase="'3'"><a [href]="i.content_url" target="_blank" >{{i.name}}</a></div>  
                       <div *ngSwitchDefault><a>{{i.name}}</a></div>  
