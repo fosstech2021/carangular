@@ -6,17 +6,17 @@
                     <div class="col-md-12 pb-4" *ngFor="let i of RecentPost">
                         <aside id="sidebar" class="sidebar bg-under-widget">
                             <div class="sidebar-content widget-divider-off">
-                                <section  class="widget widget_presscore-blog-posts">
+                                <section  class="widget widget_presscore-blog-posts card ml-2 pl-2">
 
                                     <div class="row pt-5 pb-5">
                                         <div class="col-md-3">
-                                            <img src="{{i.display_image}}" class="img-fluid">
+                                            <img src="{{i.display_image}}" class="img-fluid" height="68" height="68" style="border-radius: 20px;">
                                         </div>
                                         <div class="col-md-9">
 
-                                            <h3>{{i.title}}</h3>
-                                            <div class="pt-3"><h6 style="color: gray;">{{i.subtitle}}</h6></div>
-                                            <a style="cursor: pointer;" [routerLink]="['/BlogDetails/'+i.id]"><b>Details </b><i class="fa fa-angle-right"  aria-hidden="true"></i>
+                                            <h3 style="font-size: 19px;">{{i.title}}</h3>
+                                            <div class="pt-3"><h6 style="color: gray; font-size: 12px;">{{i.subtitle}}</h6></div>
+                                            <a style="cursor: pointer; font-size: 12px;" class="btn btn-info" [routerLink]="['/BlogDetails/'+i.id]"><b>Read More </b><i class="fa fa-angle-right"  aria-hidden="true"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -39,10 +39,10 @@
                                             <div class="row">
                                                 <div class="col-md-4 pb-4">
                                                     <a ><img src="{{i.display_image}}"
-                                                            class="img-fluid"><i></i></a></div>
-                                                <div class="col-md-8 pb-4">
+                                                            class="img-fluid" height="68" width="68"><i></i></a></div>
+                                                <div class="col-md-8 pb-4" style="font-size: 13px;">
                                                     <a>{{i.title}}</a><br>
-                                                    <time class="text-secondary" datetime="">{{i.updated_at|date }}</time>
+                                                    <time class=" badge badge-info" datetime="" style="font-size:11px; color: white;">{{i.updated_at|date }}</time>
                                                 </div>
                                             </div>
                                         </article>
@@ -57,16 +57,16 @@
                                 </ul>
                             </section> -->
                             <section id="woocommerce_products-2" class="widget woocommerce widget_products">
-                                <h4 class="widget-title p-4"><b>product</b></h4>
+                                <h4 class="widget-title p-4"><b>Products</b></h4>
                                 <ul class="product_list_widget">
                                     <li *ngFor="let i of ProductList">
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                <img src="{{i.images[0]}}" class="img-fluid">
+                                                <img src="{{i.images[0]}}" class="img-fluid" height="68" width="68">
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <span class="product-title">{{i.title}}</span>
+                                                    <span class="product-title" style="font-size: 13px;">{{i.title}}</span>
                                                 </div>
                                             </div>
 
