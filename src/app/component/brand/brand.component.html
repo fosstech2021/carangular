@@ -1,22 +1,39 @@
-
 <div class="container">
-<div class="row mt-5">
+  <div class="row mt-5">
 
-    
+    <div class="ng-autocomplete col-md-12 mb-3">
+  
+      <ng-autocomplete [data]="Data" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        (inputChanged)='onChangeSearch($event)'  [itemTemplate]="itemTemplate"
+        (inputCleared)="searchCleared()"
+        [notFoundTemplate]="notFoundTemplate" placeholder="Search Brand" >
+      </ng-autocomplete>
 
-        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of BrandList" >
-          <div class="card h-100">
-            <a [routerLink]="['/CarModel/'+i.id]"><img class="card-img-top" src='{{i.image}}'  alt="image"></a>
-            <div class="card-body align-text-bottom">
-              <h4 class="card-title">
-                <a [routerLink]="['/CarModel/'+i.id]" >{{i.name}}</a>
-              </h4>
-              <p class="card-text">{{i.description}}</p>
-            </div>
-          </div>
-        </div>
+      <ng-template #itemTemplate let-item>
+        <a [innerHTML]="item.name"></a>
+      </ng-template>
 
-
+      <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+      </ng-template>
+    </div>
 
   </div>
+    <div class="row mt-5">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of BrandList | FilterData: searchedValue">
+      <div class="card h-100">
+        <a [routerLink]="['/CarModel/'+i.id]"><img class="card-img-top" src='{{i.image}}' alt="image"></a>
+        <div class="card-body align-text-bottom">
+          <h4 class="card-title">
+            <a [routerLink]="['/CarModel/'+i.id]">{{i.name}}</a>
+          </h4>
+          <p class="card-text">{{i.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
 </div>

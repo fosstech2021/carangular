@@ -13,6 +13,8 @@ export class CaryearComponent implements OnInit {
 
   parmsId:any;
   CarYearList: any;
+  searchedValue : '';
+  Data : any;
   ngOnInit(): void {
     debugger;
     this.route.params.subscribe((val) => {
@@ -25,8 +27,39 @@ export class CaryearComponent implements OnInit {
   {
   this.register.GetCarYear(Value).subscribe((res: any) => {
     this.CarYearList = res.data.car_year_models;
+    this.Data = [];
+    for (let i = 0; i < this.CarYearList.length; i++) {
+      this.Data.push({
+        id: this.CarYearList[i].id,
+        name: this.CarYearList[i].name,
+      });
+    }
 
   })
+  }
+
+  
+  selectEvent(val) {
+    this.searchedValue = val.name;
+    debugger;
+
+  }
+  onChangeSearch(val) {
+    debugger;
+    this.searchedValue = val;
+
+  }
+
+  FilterData(val) {
+    debugger;
+    this.searchedValue = val.name;
+    
+   
+  }
+
+  searchCleared() {
+    debugger;
+    this.searchedValue ='';
   }
 
 

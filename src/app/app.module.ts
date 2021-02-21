@@ -23,6 +23,8 @@ import { ServiceTypeContainerComponent } from './component/service-type-containe
 import { ServiceTypeComponent } from './component/service-type/service-type.component';
 import { PageNotFouundComponent } from './component/page-not-fouund/page-not-fouund.component';
 import { ParentFolderComponent } from './component/parent-folder/parent-folder.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { FilterPipe } from './shared/Filter.pipe';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -64,14 +66,17 @@ const appRoutes: Routes = [
     ServiceTypeContainerComponent,
     ServiceTypeComponent,
     PageNotFouundComponent,
-    ParentFolderComponent
+    ParentFolderComponent ,
+    FilterPipe
+   
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule ,
+    AutocompleteLibModule
 
   ],
   providers: [AaheoService],
