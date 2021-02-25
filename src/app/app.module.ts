@@ -25,6 +25,7 @@ import { PageNotFouundComponent } from './component/page-not-fouund/page-not-fou
 import { ParentFolderComponent } from './component/parent-folder/parent-folder.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FilterPipe } from './shared/Filter.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -76,7 +77,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule ,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    NgbModule
 
   ],
   providers: [AaheoService],

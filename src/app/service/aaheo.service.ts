@@ -19,6 +19,15 @@ export class AaheoService {
   {
     return this.http.get(this.path+"/product/"+id);
   }
+
+  productReview(id)
+  {
+    return this.http.get(this.path+"/review/?product_id="+id +"&order_by=created_at");
+  }
+  SaveproductReview(Data)
+  {
+    return this.http.post(this.path+"/review/" , Data);
+  }
   getpost()
   {
     return this.http.get(this.path+"/post/");
@@ -30,6 +39,15 @@ export class AaheoService {
   getComment()
   {
     return this.http.get(this.path+"/comment/");
+  }
+  getBlogComment(id)
+  {
+    return this.http.get(this.path+"/comment/?post_id="+id+"&order_by=created_at" );
+  }
+
+  SaveBlogComment(Data)
+  {
+    return this.http.post(this.path+"/comment/" ,Data );
   }
   postLogin(obj){
     return this.http.post(this.path+"/login", obj)

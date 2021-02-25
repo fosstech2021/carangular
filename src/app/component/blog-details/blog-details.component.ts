@@ -13,6 +13,7 @@ export class BlogDetailsComponent implements OnInit {
   Recentcomments:any;
   BlogInformation:any;
   ProductList:any;
+  Commentsdata : any;
 
   constructor(
     private register: AaheoService,
@@ -32,12 +33,7 @@ export class BlogDetailsComponent implements OnInit {
       // console.log(this.RecentPost)
 
     })
-    this.register.getComment().subscribe((res: any) => {
-      // console.log(res)
-      this.Recentcomments = res.data.comments;
-
-    })
-
+ 
      this.register.getpostId(this.BlogId).subscribe((res: any) => {
       this.BlogInformation = res.data;
 
@@ -49,11 +45,45 @@ export class BlogDetailsComponent implements OnInit {
       // console.log(this.ProductList)
 
     })
+
+    this.GetBlogComment();
+  }
+
+
+  GetBlogComment()
+  {
+    
+    this.register.getBlogComment(this.BlogId).subscribe((res: any) => {
+      // console.log(res)
+      this.Recentcomments = res.data.comments;
+
+    })
+
   }
   blogInfo(id){
     // console.log(id)
     this.router.navigate(['/BlogDetails',{id}])
 
+  }
+
+  ShareComment( value)
+  {
+    this.Commentsdata =  { 
+      name: "string",
+      email: "string",
+      comment: value,
+      web_url: "string",
+      approved: false,
+      post_id : this.BlogId,
+      users_id: 1
+    };
+
+    this.register.SaveBlogComment(this.Commentsdata).subscribe((res: any) => {
+     
+      this.GetBlogComment();
+
+    })
+   
   }
 
 }
