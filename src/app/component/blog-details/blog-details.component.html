@@ -1,136 +1,164 @@
 <div class="container pt-1 pb-1">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-8 pt-5">
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="{{BlogInformation.primary_image}}" class="img-fluid">
-                        </div>
-                        <div class="col-md-6">
-                            <img src="{{BlogInformation.secondary_image}}" class="img-fluid">
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 pb-4">
-                            <h3 >{{BlogInformation.title}}</h3>
-                            <div style="border-bottom: 1.5px solid gray; width: 100%; margin-top:4px;"></div>
-
-                            <span class="date-post"></span>
-                            
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="color: gray;" [innerHTML]="BlogInformation.content_description"></div>
-                        </div>
-                    </div>
-                   
-
-                </div>
-                <div class="col-md-4 pt-5">
-                    <aside id="sidebar" class="sidebar bg-under-widget">
-                        <div class="sidebar-content widget-divider-off">
-                            <section id="presscore-blog-posts-6" class="widget widget_presscore-blog-posts">
-                                <h4 class="widget-title p-4"><b>Recent posts</b></h4>
-                                <ul class="recent-posts">
-                                    <li *ngFor="let i of RecentPost">
-                                        <article class="post-format-standard">
-                                            <div class="row">
-                                                <div class="col-md-4 pb-4">
-                                                    <a><img src="{{i.display_image}}" class="img-fluid" height="68" width="68"><i></i></a>
-                                                </div>
-                                                <div class="col-md-8 pb-4">
-                                                    <a style="font-size: 13px;">{{i.title}}</a><br>
-                                                    <time class="text-secondary" style="font-size: 11px;;" datetime="">{{i.updated_at|date
-                                                        }}</time>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </li>
-
-                                </ul>
-                            </section>
-                            
-                        </div>
-                    </aside>
-
-                </div>
-
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8 pt-5">
+          <div class="row">
+            <div class="col-md-6">
+              <img
+                src="{{ BlogInformation.primary_image }}"
+                class="img-fluid"
+              />
             </div>
+            <div class="col-md-6">
+              <img
+                src="{{ BlogInformation.secondary_image }}"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 pb-4">
+              <h3>{{ BlogInformation.title }}</h3>
+              <div
+                style="
+                  border-bottom: 1.5px solid gray;
+                  width: 100%;
+                  margin-top: 4px;
+                "
+              ></div>
+
+              <span class="date-post"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div
+                style="color: gray"
+                [innerHTML]="BlogInformation.content_description"
+              ></div>
+            </div>
+          </div>
         </div>
+        <div class="col-md-4 pt-5">
+          <aside id="sidebar" class="sidebar bg-under-widget">
+            <div class="sidebar-content widget-divider-off">
+              <section
+                id="presscore-blog-posts-6"
+                class="widget widget_presscore-blog-posts"
+              >
+                <h4 class="widget-title p-4"><b>Recent posts</b></h4>
+                <ul class="recent-posts">
+                  <li *ngFor="let i of RecentPost">
+                    <article class="post-format-standard">
+                      <div class="row">
+                        <div class="col-md-4 pb-4">
+                          <a
+                            ><img
+                              src="{{ i.display_image }}"
+                              class="img-fluid"
+                              height="68"
+                              width="68" /><i></i
+                          ></a>
+                        </div>
+                        <div class="col-md-8 pb-4">
+                          <a style="font-size: 13px">{{ i.title }}</a
+                          ><br />
+                          <time
+                            class="text-secondary"
+                            style="font-size: 11px ;"
+                            datetime=""
+                            >{{ i.updated_at | date }}</time
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </aside>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <section id="recent-comments-2" class="widget widget_recent_comments">
-   <div class="container">
-       <div class="row card">
-           <!-- <div class="col-sm-12">
+  <div class="container">
+    <div class="row card">
+      <!-- <div class="col-sm-12">
             <h4 class="widget-title p-4"><b>Comments</b></h4>
             <ul id="recentcomments" *ngFor="let i of Recentcomments">
                 <li class="recentcomments"><a>{{i.comment}}</a></li>
             </ul>
            </div> -->
 
-
-
-           <h2 class="card-header">Comments</h2>
-
-           <div class="card-body">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                    <div class="form-group">
-                        <label class="sr-only" for="message">post</label>
-                        <textarea class="form-control" id="message" rows="3" #Comment placeholder="What are you thinking..."></textarea>
-                    </div>
-
-                </div>
+      <h2 class="card-header">Comments</h2>
+      <div *ngIf="LogInInfo != null">
+        <div class="card-body">
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="posts"
+              role="tabpanel"
+              aria-labelledby="posts-tab"
+            >
+              <div class="form-group">
+                <label class="sr-only" for="message">post</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  rows="3"
+                  #Comment
+                  placeholder="What are you thinking..."
+                ></textarea>
+              </div>
             </div>
-            <div class="text-right">
-                <button type="submit" class="btn btn-primary" (click) ="ShareComment(Comment.value)">Share</button>
-            </div>
+          </div>
+          <div class="text-right">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="ShareComment(Comment.value)"
+            >
+              Share
+            </button>
+          </div>
         </div>
+      </div>
 
-           <div class=" col-md-12" *ngFor="let i of Recentcomments">
-            <div class='container'>
-                <div class="media comment-box">
-                   <div class="media-left">
-                    <i class="fa fa-user fa-4x" aria-hidden="true"></i>
-                   </div>
-                   <div class="media-body">
-                       <h4 class="media-heading">{{i.name}}</h4>
-                       <p>{{i.comment}}</p>
-                     
-                   </div>
-               </div>
-       </div>
-            
-            
-        </div> 
-
-       </div>
-   </div>
+      <div class="col-md-12" *ngFor="let i of Recentcomments">
+        <div class="container">
+          <div class="media comment-box">
+            <div class="media-left">
+              <i class="fa fa-user fa-4x" aria-hidden="true"></i>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{ i.name }}</h4>
+              <p>{{ i.comment }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="woocommerce_products-2" class="widget woocommerce widget_products">
-   <div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col-sm-12"> <h4 class="widget-title p-4 text-center"><b>Product</b></h4></div>
-       
+      <div class="col-sm-12">
+        <h4 class="widget-title p-4 text-center"><b>Product</b></h4>
+      </div>
     </div>
     <div class="row">
-           
-        <div class="col-sm-12 col-md-4" *ngFor="let i of ProductList">
-            <div class="card" >
-                <div class="card-body">
-                    <img src="{{i.images[0]}}" class="img-fluid">
-                     <h4 class="card-header" style="font-size: 16px;"> {{i.title}}</h4>
-                </div>
-               
-            </div>
-       
+      <div class="col-sm-12 col-md-4" *ngFor="let i of ProductList">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{ i.images[0] }}" class="img-fluid" />
+            <h4 class="card-header" style="font-size: 16px">{{ i.title }}</h4>
+          </div>
         </div>
-            </div>
-   </div>
+      </div>
+    </div>
+  </div>
 </section>

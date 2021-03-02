@@ -16,12 +16,27 @@
           <a class="nav-link" href="#" style="color: white;">Jodhpur, Rajasthan, India(342001)</a>
         </li>
       </ul>
-      <ul class="navbar-nav form-inline my-2 my-lg-0">
-        <form class="form-inline my-2 my-lg-0" [formGroup]="SearchForm">
+     
+        <!-- <form class="form-inline my-2 my-lg-0 mr-5" >
           <input class="form-control mr-sm-2" type="search" placeholder="Search" formControlName="Search" aria-label="Search">
           <i class="fa fa-search" aria-hidden="true" style="color: white;"></i>
+    </form> -->
+    <div class="col-md-3" > 
+        <ng-autocomplete class="" [data]="Data" searchKeyword="name" (selected)='selectEvent($event)'
+          (inputChanged)='onChangeSearch($event)'  [itemTemplate]="itemTemplate"
+          (inputCleared)="searchCleared()"
+          placeholder="Search" >
+        </ng-autocomplete>
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+        </ng-template>
+  
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
 
-        </form>
+    </div>
+        <ul class="navbar-nav form-inline my-2 my-lg-0" *ngIf="LogInInfo == null" >
         <li class="nav-item">
           <a class="nav-link googleTag" href="https://www.facebook.com/Carchipcare-298221140769197/" target="_blank"><span class="fa fa-facebook" aria-hidden="true" style="color:white;"></span></a>
         </li>
@@ -31,11 +46,20 @@
 
         <li class="nav-item">
           <a class="nav-link googleTag" href="https://wa.me/919001210608" target="_blank"><span class="fa fa-whatsapp" aria-hidden="true" style="color:white;"></span></a>
-
         </li>
 
         <li class="nav-item ">
           <a class="nav-link " routerLink="/login" style="color: white;">login</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav form-inline my-2 my-lg-0" *ngIf="LogInInfo != null" > 
+
+        <li class="mr-2 " style="color: white;">
+           Hii {{Name}} 
+        </li>
+        <li>
+         
+          <a (click)="Logout()" class="btn btn-light mr-5" style="color:black"> Log Out </a>
         </li>
       </ul>
     </div>

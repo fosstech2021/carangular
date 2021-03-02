@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import {HttpClient,HttpHeaders, HttpParams, JsonpClientBackend} from '@angular/common/http';
 import { environment } from "../../environments/environment";
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,15 @@ import { environment } from "../../environments/environment";
 export class AaheoService {
   public path = environment.api_url;
   id :string;
+  @Output() getLoggedInData: EventEmitter<any> = new EventEmitter();
+  
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    debugger;
+  
+  }
 
+ 
   getproduct()
   {
     return this.http.get(this.path+"/product/");
@@ -50,7 +57,7 @@ export class AaheoService {
     return this.http.post(this.path+"/comment/" ,Data );
   }
   postLogin(obj){
-    return this.http.post(this.path+"/login", obj)
+    return this.http.post(this.path+"/login/", obj)
   }
   PostcontactUs(obj){
     return this.http.post(this.path+"/contact_us/",obj)
@@ -61,6 +68,10 @@ export class AaheoService {
   GetBrand(id)
   {
     return this.http.get(this.path+"/brand/?service_category=" + id);
+  }
+  GetSearchData(Value)
+  {
+    return this.http.get(this.path+"/search/?q=" + Value);
   }
   GetCarModel(id)
   {
@@ -94,4 +105,21 @@ export class AaheoService {
     return this.http.get(this.path+"/folder/?year=" +id);
   }
 
+  Setlogindetail(Data)
+  {
+    
+  localStorage.setItem("UserLogIn", JSON.stringify(Data));
+  
+  this.getLoggedInData.emit(JSON.stringify(Data));
+
+  }
+
+  
+  Getlogindetail()
+  {
+    
+   return JSON.parse(  localStorage.getItem("UserLogIn"));
+
+  }
+  
 }

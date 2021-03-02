@@ -14,6 +14,7 @@ export class BlogDetailsComponent implements OnInit {
   BlogInformation:any;
   ProductList:any;
   Commentsdata : any;
+  LogInInfo : any ;
 
   constructor(
     private register: AaheoService,
@@ -22,7 +23,7 @@ export class BlogDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+this.loginData();
     this.route.params.subscribe((val) => {
       // console.log(val)
       this.BlogId = val.id;
@@ -69,13 +70,13 @@ export class BlogDetailsComponent implements OnInit {
   ShareComment( value)
   {
     this.Commentsdata =  { 
-      name: "string",
-      email: "string",
+      name:  this.LogInInfo.first_name + " " + this.LogInInfo.last_name,
+      email: this.LogInInfo.email,
       comment: value,
-      web_url: "string",
+      web_url: "",
       approved: false,
       post_id : this.BlogId,
-      users_id: 1
+      users_id: this.LogInInfo.id
     };
 
     this.register.SaveBlogComment(this.Commentsdata).subscribe((res: any) => {
@@ -84,6 +85,12 @@ export class BlogDetailsComponent implements OnInit {
 
     })
    
+  }
+
+  loginData() {
+    this.LogInInfo  = this.register.Getlogindetail()
+      
+    
   }
 
 }

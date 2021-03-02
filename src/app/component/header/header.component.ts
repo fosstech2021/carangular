@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AaheoService } from "src/app/service/aaheo.service";
 
 @Component({
@@ -12,10 +13,29 @@ export class HeaderComponent implements OnInit {
   UserName: any;
   SearchForm: FormGroup;
   ServicecategoryList: any;
+  LogInInfo: any;
+  Data: any;
+  ProductsList: any;
+  searchedValue: any;
+  Name: any;
+  get isLoggedIn() { return this.register.Getlogindetail(); }
+  constructor(
+    private fb: FormBuilder,
+    private register: AaheoService,
+    private router: Router
+  ) {
 
-  constructor(private fb: FormBuilder, private register: AaheoService) {}
+  }
 
   ngOnInit(): void {
+    // this.register.getLoggedInData.subscribe(name => {
+    //   alert(name)
+    //   this.loginData()   
+    // });
+
+
+    this.GetProduct("");
+    this.loginData();
     this.SearchForm = this.fb.group({
       Search: ["", Validators.required],
     });
@@ -29,7 +49,7 @@ export class HeaderComponent implements OnInit {
         this.className += " active";
       });
     }
-    this.GetserviceCategory()
+    this.GetserviceCategory();
   }
   logout() {}
 
@@ -37,5 +57,59 @@ export class HeaderComponent implements OnInit {
     this.register.GetserviceCategory().subscribe((res: any) => {
       this.ServicecategoryList = res.data.service_categories;
     });
+  }
+ngOnChange()
+{
+  this.loginData() ;
+}
+
+  loginData() {
+    debugger;
+    this.LogInInfo = this.register.Getlogindetail();
+    this.Name = this.LogInInfo.first_name;
+  }
+
+  Logout() {
+    debugger;
+    this.register.Setlogindetail(null);
+    localStorage.removeItem("UserLogIn");
+    this.LogInInfo = null;
+  }
+
+  GetProduct(value) {
+    this.register.GetSearchData(value).subscribe((res: any) => {
+      debugger;
+      this.ProductsList = res.data.products;
+
+      this.Data = [];
+      for (let i = 0; i < this.ProductsList.length; i++) {
+        this.Data.push({
+          id: this.ProductsList[i].id,
+          name: this.ProductsList[i].title,
+        });
+      }
+    });
+  }
+
+  selectEvent(val) {
+    this.searchedValue = val.name;
+    let productid = val.id;
+    this.router.navigate(["/ProductInfo/" + productid]);
+    debugger;
+  }
+  onChangeSearch(val) {
+    debugger;
+    this.GetProduct(val);
+    this.searchedValue = val;
+  }
+
+  FilterData(val) {
+    debugger;
+    this.searchedValue = val.name;
+  }
+
+  searchCleared() {
+    debugger;
+    this.searchedValue = "";
   }
 }

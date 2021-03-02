@@ -13,8 +13,8 @@ export class ProductInfoComponent implements OnInit {
   ProductReviewInformation: any;
   changeImg: any;
   changeContent: any = 1;
-  SaveProductReview : any ;
-
+  SaveProductReview: any;
+  LogInInfo: any;
   Rateselected = 0;
   constructor(
     private register: AaheoService,
@@ -24,17 +24,18 @@ export class ProductInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeImg = 1;
+    this.loginData();
     this.route.params.subscribe((val) => {
       this.parmsId = val.id;
+      this.register.productlists(this.parmsId).subscribe((res: any) => {
+        this.ProductInformation = res.data;
+      });
     });
-    this.register.productlists(this.parmsId).subscribe((res: any) => {
-      this.ProductInformation = res.data;
-    });
-this.ProductReviewlist();
+
+    this.ProductReviewlist();
   }
 
-  ProductReviewlist()
-  {
+  ProductReviewlist() {
     this.register.productReview(this.parmsId).subscribe((res: any) => {
       this.ProductReviewInformation = res.data.reviews;
     });
@@ -49,19 +50,26 @@ this.ProductReviewlist();
     this.changeContent = val;
   }
 
-  ShareRating(val) { 
-    debugger;
+  ShareRating(val) {
     this.SaveProductReview = {
-      "name": "",
-      "email": "",
-      "review": "",
-      "rating": this.Rateselected,
-      "approved": false,
-      "product_id": this.parmsId,
-      "users_id": 0
-    }
-    this.register.SaveproductReview(this.SaveProductReview).subscribe((res: any) => {
-      this.ProductReviewlist();
-    });
+      name: this.LogInInfo.first_name + " " + this.LogInInfo.last_name,
+      email: this.LogInInfo.email,
+      review: val,
+      rating: this.Rateselected,
+      approved: false,
+      product_id: this.parmsId,
+      users_id: this.LogInInfo.id,
+    };
+    this.register
+      .SaveproductReview(this.SaveProductReview)
+      .subscribe((res: any) => {
+        this.Rateselected = 0;
+        val = "";
+        this.ProductReviewlist();
+      });
+  }
+
+  loginData() {
+    this.LogInInfo  = this.register.Getlogindetail()
   }
 }
