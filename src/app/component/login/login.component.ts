@@ -109,7 +109,8 @@ export class LoginComponent implements OnInit {
     this.register.postLogin(obj).subscribe((res: any) => {
       this.register.Setlogindetail(res.data)
       
-      this.router.navigate(['/home']);
+      //this.router.navigate(['/home']);
+      window.location.href="/home";
     });
   }
   registernew() {}
