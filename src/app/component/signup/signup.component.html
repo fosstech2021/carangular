@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-5">
+                    <div *ngIf="PopupMessage" class="alert alert-success alert-dismissible">
+                        Sign Up successfully
+                      </div>
+                      <div *ngIf="!PopupMessage" class="alert alert-danger alert-dismissible">
+                        Sign Up Failed
+                  </div>
+                    <form [formGroup]="MyRegisterForm" (ngSubmit)="RegisterUser()">
+                        <div class="row">
+                            <div class="col-md-12 pb-3">
+                                <div class="text-center">
+                                    <h3 style="font-weight: 600;">SIGN UP</h3>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" id="first_name" placeholder="Enter your First name"
+                                    formControlName="first_name"
+                                    [ngClass]="{ 'is-invalid': MyRegisterForm.get('first_name')?.errors && (MyRegisterForm.get('first_name').touched || MyRegisterForm.get('first_name').dirty)}">
+                                <div *ngIf="MyRegisterForm.get('first_name').errors?.required"
+                                    class="invalid-feedback warning-msg">
+                                    First name required
+                                </div>            
+                                <div *ngIf="MyRegisterForm.get('first_name').errors?.minlength || MyRegisterForm.get('first_name').errors?.maxlength"
+                                    class="invalid-feedback warning-msg">
+                                    Please Enter Valid Email Address
+                                </div> 
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" id="last_name" placeholder="Enter your Last name"
+                                    formControlName="last_name"
+                                    [ngClass]="{ 'is-invalid': MyRegisterForm.get('last_name')?.errors && (MyRegisterForm.get('last_name').touched || MyRegisterForm.get('last_name').dirty)}">
+                                <div *ngIf="MyRegisterForm.get('last_name').errors?.required"
+                                    class="invalid-feedback warning-msg">
+                                    First name required
+                                </div>            
+                                <div *ngIf="MyRegisterForm.get('last_name').errors?.minlength || MyRegisterForm.get('last_name').errors?.maxlength"
+                                    class="invalid-feedback warning-msg">
+                                    Please Enter Valid Email Address
+                                </div> 
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" id="username" placeholder="Enter your User Name"
+                                    formControlName="username"
+                                    [ngClass]="{ 'is-invalid': MyRegisterForm.get('username')?.errors && (MyRegisterForm.get('username').touched || MyRegisterForm.get('username').dirty)}">
+                                <div *ngIf="MyRegisterForm.get('username').errors?.required"
+                                    class="invalid-feedback warning-msg">
+                                    First name User name
+                                </div>            
+                                <div *ngIf="MyRegisterForm.get('username').errors?.minlength || MyRegisterForm.get('username').errors?.maxlength"
+                                    class="invalid-feedback warning-msg">
+                                    Please Enter User name
+                                </div> 
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="email" class="form-control" id="Useremail" placeholder="Enter your email"
+                                    formControlName="Useremail"
+                                    [ngClass]="{ 'is-invalid': MyRegisterForm.get('Useremail')?.errors && (MyRegisterForm.get('Useremail').touched || MyRegisterForm.get('Useremail').dirty)}">
+                                <div *ngIf="MyRegisterForm.get('Useremail').errors?.required"
+                                    class="invalid-feedback warning-msg">
+                                    Email required
+                                </div>
+                                <div *ngIf="MyRegisterForm.get('Useremail').errors?.email" class="invalid-feedback warning-msg">
+                                    Please Enter Valid Email Address
+                                </div>              
+                                <div *ngIf="MyRegisterForm.get('Useremail').errors?.minlength || MyRegisterForm.get('Useremail').errors?.maxlength"
+                                    class="invalid-feedback warning-msg">
+                                    Please Enter Valid Email Address
+                                </div> 
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="password" class="form-control" id="password" 
+                                    placeholder="Enter your password" formControlName="password"
+                                    [ngClass]="{ 'is-invalid': MyRegisterForm.get('password')?.errors && (MyRegisterForm.get('password').touched || MyRegisterForm.get('password').dirty)}">
+                                <div *ngIf="MyRegisterForm.get('password').errors?.required" class="invalid-feedback warning-msg">
+                                    Password required
+                                </div>
+                            </div> 
+
+                            <div class="form-group col-md-12">
+                                <input type="password" class="form-control" id="passwordRetype" 
+                                    placeholder="Enter your password" formControlName="passwordRetype"
+                                    [ngClass]="{ 'is-invalid': MyRegisterForm.get('passwordRetype')?.errors && (MyRegisterForm.get('passwordRetype').touched || MyRegisterForm.get('passwordRetype').dirty)}">
+                                
+                             
+                                <div  *ngIf=" MyRegisterForm.get('passwordRetype').errors?.notSame" class="invalid-feedback warning-msg">
+                                    Confirm Password Does not match
+                                </div>
+                            </div> 
+                          <div class="form-group col-md-12 text-center">
+                                <button type="submit"  [disabled]="!MyRegisterForm.valid"  class="btn btn-primary btn-block mt-3"><b>Register</b></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

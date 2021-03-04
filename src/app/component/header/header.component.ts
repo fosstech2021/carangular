@@ -18,21 +18,20 @@ export class HeaderComponent implements OnInit {
   ProductsList: any;
   searchedValue: any;
   Name: any;
-  get isLoggedIn() { return this.register.Getlogindetail(); }
+  get isLoggedIn() {
+    return this.register.Getlogindetail();
+  }
   constructor(
     private fb: FormBuilder,
     private register: AaheoService,
     private router: Router
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     // this.register.getLoggedInData.subscribe(name => {
     //   alert(name)
-    //   this.loginData()   
+    //   this.loginData()
     // });
-
 
     this.GetProduct("");
     this.loginData();
@@ -58,58 +57,59 @@ export class HeaderComponent implements OnInit {
       this.ServicecategoryList = res.data.service_categories;
     });
   }
-ngOnChange()
-{
-  this.loginData() ;
-}
+  ngOnChange() {
+    this.loginData();
+  }
 
   loginData() {
-    debugger;
+
     this.LogInInfo = this.register.Getlogindetail();
-    this.Name = this.LogInInfo.first_name;
+    if (this.LogInInfo != null) this.Name = this.LogInInfo.first_name;
   }
 
   Logout() {
-    debugger;
+ 
     this.register.Setlogindetail(null);
     localStorage.removeItem("UserLogIn");
     this.LogInInfo = null;
   }
 
   GetProduct(value) {
-    this.register.GetSearchData(value).subscribe((res: any) => {
-      debugger;
-      this.ProductsList = res.data.products;
+    if (value != null && value != "") {
+      this.register.GetSearchData(value).subscribe((res: any) => {
+      
+        this.ProductsList = res.data.products;
 
-      this.Data = [];
-      for (let i = 0; i < this.ProductsList.length; i++) {
-        this.Data.push({
-          id: this.ProductsList[i].id,
-          name: this.ProductsList[i].title,
-        });
-      }
-    });
+        this.Data = [];
+        for (let i = 0; i < this.ProductsList.length; i++) {
+          this.Data.push({
+            id: this.ProductsList[i].id,
+            name: this.ProductsList[i].title,
+          });
+        }
+      });
+    }
   }
 
   selectEvent(val) {
     this.searchedValue = val.name;
     let productid = val.id;
     this.router.navigate(["/ProductInfo/" + productid]);
-    debugger;
+
   }
   onChangeSearch(val) {
-    debugger;
+   
     this.GetProduct(val);
     this.searchedValue = val;
   }
 
   FilterData(val) {
-    debugger;
+ 
     this.searchedValue = val.name;
   }
 
   searchCleared() {
-    debugger;
+
     this.searchedValue = "";
   }
 }

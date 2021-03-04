@@ -26,6 +26,7 @@ import { ParentFolderComponent } from './component/parent-folder/parent-folder.c
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FilterPipe } from './shared/Filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignupComponent } from './component/signup/signup.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'Contact', component: ContactUsComponent },
   { path: 'Service', component: FilterServiceComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'Signup', component: SignupComponent },
   { path: 'Brand/:id', component: BrandComponent },
   { path: 'CarModel/:id', component: CarModelComponent },
   { path: 'CarYears/:id', component: CaryearComponent },
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
     ServiceTypeComponent,
     PageNotFouundComponent,
     ParentFolderComponent ,
-    FilterPipe
+    FilterPipe,
+    SignupComponent
    
   ],
   imports: [

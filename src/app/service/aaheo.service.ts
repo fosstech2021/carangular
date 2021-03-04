@@ -13,7 +13,7 @@ export class AaheoService {
   
 
   constructor(private http:HttpClient) { 
-    debugger;
+
   
   }
 
@@ -55,6 +55,9 @@ export class AaheoService {
   SaveBlogComment(Data)
   {
     return this.http.post(this.path+"/comment/" ,Data );
+  }
+  RegisterUser(obj){
+    return this.http.post(this.path+"/signup/", obj)
   }
   postLogin(obj){
     return this.http.post(this.path+"/login/", obj)
