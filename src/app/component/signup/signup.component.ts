@@ -22,30 +22,35 @@ export class SignupComponent implements OnInit {
   constructor(private fb: FormBuilder, private register: AaheoService) {}
 
   MyRegisterForm: FormGroup;
-  PopupMessage :boolean = false;
+  PopupMessage: boolean;
+  Submit : boolean;
 
   ngOnInit(): void {
-    this.MyRegisterForm = this.fb.group({
-      first_name: [""],
-      last_name: [""],
-      username: ["", Validators.required],
-      Useremail: ["", Validators.required ],
-      password: ["", Validators.required],
-      passwordRetype: ["", Validators.required],
-    } ,  { validators: this.passwordmatchValues });
+    this.MyRegisterForm = this.fb.group(
+      {
+        first_name: [""],
+        last_name: [""],
+        username: ["", Validators.required],
+        Useremail: ["", Validators.required],
+        password: ["", Validators.required],
+        passwordRetype: ["", Validators.required],
+      },
+      { validators: this.passwordmatchValues }
+    );
   }
 
   passwordmatchValues(group: FormGroup) {
     // here we have the 'passwords' group
     const password = group.get("password").value;
     const confirmPassword = group.get("passwordRetype").value;
-     let result = password == confirmPassword ? null : { notSame: true };
-     group.get("passwordRetype").setErrors(result);
-     return result;
+    let result = password == confirmPassword ? null : { notSame: true };
+    group.get("passwordRetype").setErrors(result);
+    return result;
   }
 
   RegisterUser() {
     debugger;
+    this.Submit=true;
     var obj = {
       email: this.MyRegisterForm.controls["Useremail"].value,
       password: this.MyRegisterForm.controls["password"].value,
@@ -57,11 +62,9 @@ export class SignupComponent implements OnInit {
     };
 
     this.register.RegisterUser(obj).subscribe((res: any) => {
-
-      if(res.success)
-      {
-this.PopupMessage = true;
-      }else{
+      if (res.success) {
+        this.PopupMessage = true;
+      } else {
         this.PopupMessage = false;
       }
       debugger;

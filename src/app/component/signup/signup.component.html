@@ -2,13 +2,15 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-5">
+                <div class="col-md-5" >
+                    <div *ngIf="Submit">
                     <div *ngIf="PopupMessage" class="alert alert-success alert-dismissible">
                         Sign Up successfully
                       </div>
                       <div *ngIf="!PopupMessage" class="alert alert-danger alert-dismissible">
                         Sign Up Failed
-                  </div>
+                    </div>
+                </div>
                     <form [formGroup]="MyRegisterForm" (ngSubmit)="RegisterUser()">
                         <div class="row">
                             <div class="col-md-12 pb-3">
