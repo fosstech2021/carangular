@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
+    "@types/gapi": "0.0.39",
+    "@types/gapi.auth2": "0.0.53",
     "angular-ng-autocomplete": "^2.0.5",
     "bootstrap": "^4.5.3",
     "font-awesome": "^4.7.0",
